@@ -19,11 +19,11 @@ public class TextBoxTest {
     @Test
     void textTest() {
         open("/automation-practice-form");
-        $x("//*[@id=\"firstName\"]").setValue("Alex");
-        $x("//*[@id=\"lastName\"]").setValue("Peters");
-        $x("//*[@id=\"userEmail\"]").setValue("AlexP@mail.ru");
-        $x("//label[@for='gender-radio-1']").click();
-        $x("//input[@id='userNumber']").setValue("89131234567");
+        $x("//*[@id='firstName']").setValue("Alex");
+        $x("//input[@id='lastName']").setValue("Peters");
+        $x("//*[@id='userEmail']").setValue("AlexP@mail.ru");
+        $x("//*[text() = 'Other']").click();
+        $x("//input[@id='userNumber']").setValue("9131234567");
 
         $x("//*[@id ='dateOfBirthInput']").click();
         $x("//*[@class='react-datepicker__month-select']").selectOption("March");
@@ -41,7 +41,7 @@ public class TextBoxTest {
         $x("//*[text() = 'Submit']").click();
         $x("//*[@class ='modal-header']").shouldHave(text("Thanks for submitting the form"));
         $x("//*[@class='table-responsive']").shouldHave(text("Student Name Alex Peters"), text("Student Email AlexP@mail.ru"),
-                text("Gender Other"), text("Mobile 89131234567"), text("Date of Birth 15 March,1988"),
+                text("Gender Other"), text("Mobile 9131234567"), text("Date of Birth 15 March,1988"),
                 text("Subjects Hindi"), text("Hobbies Music"), text("Picture"),
                 text("Address Омск"), text("State and City NCR Delhi"));
     }
