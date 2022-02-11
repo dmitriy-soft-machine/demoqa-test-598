@@ -24,7 +24,6 @@ public class TextBoxTest {
         $x("//*[@id='userEmail']").setValue("AlexP@mail.ru");
         $x("//*[text() = 'Other']").click();
         $x("//input[@id='userNumber']").setValue("9131234567");
-
         $x("//*[@id ='dateOfBirthInput']").click();
         $x("//*[@class='react-datepicker__month-select']").selectOption("March");
         $x("//*[@class='react-datepicker__year-select']").selectOption("1988");
