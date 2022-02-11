@@ -24,16 +24,25 @@ public class TextBoxTest {
         $x("//*[@id=\"userEmail\"]").setValue("AlexP@mail.ru");
         $x("//label[@for='gender-radio-1']").click();
         $x("//input[@id='userNumber']").setValue("89131234567");
-      /*  $x("//input[@id='dateOfBirthInput']").setValue("10.10.1989");*/
-        $x("//*[@id=\"subjectsInput\"]").setValue("en").click();
-        $x("//label[@for='hobbies-checkbox-1']").click();
-        $x("//textarea[@id='currentAddress']").setValue("Current Address");
-        $x("//div[@class=' css-1uccc91-singleValue']").setValue("Haryana");
-        $x("//div[contains(@class,'css-1pahdxg-control')]//div[contains(@class,'css-1hwfws3')]").setValue("Karnal");
-        $x("//button[@id='submit']").click();
 
-        /*$x().click();*/
-
-        $x("/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[3]/td[2]").shouldHave(text("Male"));
+        $x("//*[@id ='dateOfBirthInput']").click();
+        $x("//*[@class='react-datepicker__month-select']").selectOption("March");
+        $x("//*[@class='react-datepicker__year-select']").selectOption("1988");
+        $x("//*[@class='react-datepicker__day react-datepicker__day--015']").click();
+        $x("//*[@id ='subjectsInput']").setValue("Hindi").pressEnter();
+        $x("//*[text() = 'Music']").click();
+        $x("//*[@id ='uploadPicture']").uploadFromClasspath("test.jpg");
+        $x("//*[text() = 'Other']").click();
+        $x("//*[@id ='currentAddress']").setValue("Омск");
+        $x("//*[@id='state']").click();
+        $x("//*[text() = 'NCR']").click();
+        $x("//*[@id ='city']").click();
+        $x("//*[text() ='Delhi']").click();
+        $x("//*[text() = 'Submit']").click();
+        $x("//*[@class ='modal-header']").shouldHave(text("Thanks for submitting the form"));
+        $x("//*[@class='table-responsive']").shouldHave(text("Student Name Alex Peters"), text("Student Email AlexP@mail.ru"),
+                text("Gender Other"), text("Mobile 89131234567"), text("Date of Birth 15 March,1988"),
+                text("Subjects Hindi"), text("Hobbies Music"), text("Picture"),
+                text("Address Омск"), text("State and City NCR Delhi"));
     }
 }
