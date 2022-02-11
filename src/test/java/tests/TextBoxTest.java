@@ -23,9 +23,9 @@ public class TextBoxTest {
         $x("//*[@id=\"lastName\"]").setValue("Peters");
         $x("//*[@id=\"userEmail\"]").setValue("AlexP@mail.ru");
         $x("//label[@for='gender-radio-1']").click();
-        $x("//input[@id='userNumber']").setValue("9131234567");
+        $x("//input[@id='userNumber']").setValue("89131234567");
       /*  $x("//input[@id='dateOfBirthInput']").setValue("10.10.1989");*/
-        $x("//div[@class='subjects-auto-complete__value-container subjects-auto-complete__value-container--is-multi css-1hwfws3']").setValue("en").click();
+        $x("//*[@id=\"subjectsInput\"]").setValue("en").click();
         $x("//label[@for='hobbies-checkbox-1']").click();
         $x("//textarea[@id='currentAddress']").setValue("Current Address");
         $x("//div[@class=' css-1uccc91-singleValue']").setValue("Haryana");
