@@ -6,8 +6,7 @@ import pages.components.*;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class AutomationPracticeForm {
     // components
@@ -15,7 +14,12 @@ public class AutomationPracticeForm {
     // Locators
     private SelenideElement firstNameInput = $x("//*[@id='firstName']"),
             lastNameInput =  $x("//input[@id='lastName']"),
-            resultTable = $x("//*[@class='table-responsive']");
+            userEmailInput =  $x("//*[@id='userEmail']"),
+            resultTable = $x("//*[@class='table-responsive']"),
+            userNumberInput=$x("//input[@id='userNumber']"),
+            subjectsInput=$x("//*[@id ='subjectsInput']"),
+            PictureLocator= $("#uploadPicture"),
+            CurrentAddressInput=$x("//*[@id ='currentAddress']");
 
 
 
@@ -32,7 +36,34 @@ public class AutomationPracticeForm {
         lastNameInput.setValue(lastName);
         return this;
     }
-
+    public  AutomationPracticeForm  setUserEmail(String UserEmail) {
+        userEmailInput.setValue(UserEmail);
+        return this;
+    }
+    public  AutomationPracticeForm  setGender(String Gender) {
+        $(byText(Gender)).click();
+        return this;
+    }
+    public  AutomationPracticeForm  setUserNumber(String userNumber) {
+        userNumberInput.setValue(userNumber);
+        return this;
+    }
+    public  AutomationPracticeForm  selectSubjects(String Subjects) {
+        subjectsInput.setValue(Subjects).pressEnter();
+        return this;
+    }
+    public  AutomationPracticeForm  setHobbies(String Hobbies) {
+        $(byText(Hobbies)).click();
+        return this;
+    }
+    public  AutomationPracticeForm  selectPicture(String FileName) {
+        PictureLocator.uploadFromClasspath(FileName);
+        return this;
+    }
+    public  AutomationPracticeForm  setCurrentAddress(String CurrentAddress) {
+        CurrentAddressInput.setValue(CurrentAddress);
+        return this;
+    }
     public  AutomationPracticeForm  checkForm(String fieldName, String value) {
         resultTable.$(byText(fieldName)).parent().shouldHave(text(value));
         return this;
