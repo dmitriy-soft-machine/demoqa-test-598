@@ -18,11 +18,11 @@ public class AutomationPracticeForm {
             resultTable = $x("//*[@class='table-responsive']"),
             userNumberInput=$x("//input[@id='userNumber']"),
             subjectsInput=$x("//*[@id ='subjectsInput']"),
-            PictureLocator= $("#uploadPicture"),
-            CurrentAddressInput=$x("//*[@id ='currentAddress']");
-
-
-
+            pictureLocator= $("#uploadPicture"),
+            currentAddressInput=$x("//*[@id ='currentAddress']"),
+            stateInput = $("#state"),
+            cityInput = $("#city"),
+            submitButton = $("#submit");
     // Actions
     public AutomationPracticeForm openPage(){
         open("/automation-practice-form");
@@ -36,32 +36,47 @@ public class AutomationPracticeForm {
         lastNameInput.setValue(lastName);
         return this;
     }
-    public  AutomationPracticeForm  setUserEmail(String UserEmail) {
-        userEmailInput.setValue(UserEmail);
+    public  AutomationPracticeForm  setUserEmail(String userEmail) {
+        userEmailInput.setValue(userEmail);
         return this;
     }
-    public  AutomationPracticeForm  setGender(String Gender) {
-        $(byText(Gender)).click();
+    public  AutomationPracticeForm  setGender(String gender) {
+        $(byText(gender)).click();
         return this;
     }
     public  AutomationPracticeForm  setUserNumber(String userNumber) {
         userNumberInput.setValue(userNumber);
         return this;
     }
-    public  AutomationPracticeForm  selectSubjects(String Subjects) {
-        subjectsInput.setValue(Subjects).pressEnter();
+    public  AutomationPracticeForm  selectSubjects(String subjects) {
+        subjectsInput.setValue(subjects).pressEnter();
         return this;
     }
-    public  AutomationPracticeForm  setHobbies(String Hobbies) {
-        $(byText(Hobbies)).click();
+    public  AutomationPracticeForm  setHobbies(String hobbies) {
+        $(byText(hobbies)).click();
         return this;
     }
-    public  AutomationPracticeForm  selectPicture(String FileName) {
-        PictureLocator.uploadFromClasspath(FileName);
+    public  AutomationPracticeForm  selectPicture(String fileName) {
+        pictureLocator.uploadFromClasspath(fileName);
         return this;
     }
-    public  AutomationPracticeForm  setCurrentAddress(String CurrentAddress) {
-        CurrentAddressInput.setValue(CurrentAddress);
+    public  AutomationPracticeForm  setCurrentAddress(String currentAddress) {
+        currentAddressInput.setValue(currentAddress);
+        return this;
+    }
+    public  AutomationPracticeForm  setState(String state) {
+        stateInput.scrollTo().click();
+        $(byText(state)).click();
+        return this;
+    }
+    public  AutomationPracticeForm  setCity(String city) {
+        cityInput.scrollTo().click();
+        $(byText(city)).click();
+        return this;
+    }
+    public AutomationPracticeForm submitForm() {
+        submitButton.click();
+
         return this;
     }
     public  AutomationPracticeForm  checkForm(String fieldName, String value) {

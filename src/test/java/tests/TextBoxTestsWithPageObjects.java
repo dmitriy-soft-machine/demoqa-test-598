@@ -31,17 +31,9 @@ public class TextBoxTestsWithPageObjects {
         automationPracticeForm.selectSubjects("Hindi").setHobbies("Music");
         automationPracticeForm.selectPicture("test.jpg");
         automationPracticeForm.setCurrentAddress("Омск");
-
-
-
-        $x("//*[@id='state']").click();
-        $x("//*[text() = 'NCR']").click();
-
-        $x("//*[@id ='city']").click();
-        $x("//*[text() ='Delhi']").click();
-
-        $x("//*[text() = 'Submit']").click();
-
+        automationPracticeForm.setState("NCR");
+        automationPracticeForm.setCity("Delhi");
+        automationPracticeForm.submitForm();
 
        automationPracticeForm.checkForm("Student Name", "Alex Peters")
                .checkForm("Student Email", "AlexP@mail.ru")
