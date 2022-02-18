@@ -5,18 +5,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.*;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
-public class TextBoxTestsWithPageObjects {
+public class AutomationPracticeFormTestsWithPageObjects extends TestBase {
     AutomationPracticeForm automationPracticeForm = new AutomationPracticeForm();
     String firstName = "Alex";
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-    }
 
     @Test
     void textTest() {

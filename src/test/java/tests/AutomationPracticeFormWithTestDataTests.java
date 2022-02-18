@@ -6,22 +6,18 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
+import static tests.TestData.*;
 
-public class TextBoxTests {
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-    }
-
+public class AutomationPracticeFormWithTestDataTests extends TestBase{
+String firstName = "Alex", lastName = "Peters";
     @Test
     void textTest() {
         open("/automation-practice-form");
-        $x("//*[@id='firstName']").setValue("Alex");
-        $x("//input[@id='lastName']").setValue("Peters");
-        $x("//*[@id='userEmail']").setValue("AlexP@mail.ru");
+        $x("//*[@id='firstName']").setValue(firstName);
+        $x("//input[@id='lastName']").setValue(lastName);
+        $x("//*[@id='userEmail']").setValue(email);
         $x("//*[text() = 'Other']").click();
-        $x("//input[@id='userNumber']").setValue("9131234567");
+        $x("//input[@id='userNumber']").setValue(phone);
         $x("//*[@id ='dateOfBirthInput']").click();
         $x("//*[@class='react-datepicker__month-select']").selectOption("March");
         $x("//*[@class='react-datepicker__year-select']").selectOption("1988");
@@ -37,7 +33,7 @@ public class TextBoxTests {
         $x("//*[text() ='Delhi']").click();
         $x("//*[text() = 'Submit']").click();
         $x("//*[@class ='modal-header']").shouldHave(text("Thanks for submitting the form"));
-        $x("//*[@class='table-responsive']").shouldHave(text("Student Name Alex Peters"), text("Student Email AlexP@mail.ru"),
+        $x("//*[@class='table-responsive']").shouldHave(text("Student Name" +" "+ firstName +" "+ lastName ), text("Student Email AlexP@mail.ru"),
                 text("Gender Other"), text("Mobile 9131234567"), text("Date of Birth 15 March,1988"),
                 text("Subjects Hindi"), text("Hobbies Music"), text("Picture"),
                 text("Address Омск"), text("State and City NCR Delhi"));
