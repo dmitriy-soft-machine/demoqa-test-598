@@ -1,15 +1,15 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static tests.TestData.*;
+import static utils.RandomUtils.getRandomString;
 
-public class AutomationPracticeFormWithTestDataTests extends TestBase{
-String firstName = "Alex", lastName = "Peters";
+public class AutomationPracticeFormWithRandomUtilsTests extends TestBase{
+String firstName = getRandomString(10),
+        lastName = getRandomString(10);
     @Test
     void textTest() {
         open("/automation-practice-form");
@@ -33,8 +33,8 @@ String firstName = "Alex", lastName = "Peters";
         $x("//*[text() ='Delhi']").click();
         $x("//*[text() = 'Submit']").click();
         $x("//*[@class ='modal-header']").shouldHave(text("Thanks for submitting the form"));
-        $x("//*[@class='table-responsive']").shouldHave(text("Student Name" +" "+ firstName +" "+ lastName ), text("Student Email" +" "+email),
-                text("Gender Other"), text("Mobile"+" "+phone), text("Date of Birth 15 March,1988"),
+        $x("//*[@class='table-responsive']").shouldHave(text("Student Name" +" "+ firstName +" "+ lastName ), text("Student Email AlexP@mail.ru"),
+                text("Gender Other"), text("Mobile 9131234567"), text("Date of Birth 15 March,1988"),
                 text("Subjects Hindi"), text("Hobbies Music"), text("Picture"),
                 text("Address Омск"), text("State and City NCR Delhi"));
     }
